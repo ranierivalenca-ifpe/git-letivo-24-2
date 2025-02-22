@@ -328,6 +328,13 @@ export default {
 	dependencies: [],
 
 	// Plugin objects to register and use for this presentation
-	plugins: []
+	plugins: [],
+
+	markdown: {
+		animateLists: true,
+		markedOptions: {
+			smart: true
+		}
+	},
 
 }
