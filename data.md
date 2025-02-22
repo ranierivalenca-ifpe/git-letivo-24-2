@@ -95,15 +95,12 @@ Uma pequena história sobre o fluxo de trabalho de um desenvolvedor de software
 ### Stage
 - Área intermediária entre o **working directory** e o **repositório**
 - Permite selecionar quais mudanças serão incluídas no próximo commit
-- `git add` move mudanças do **working directory** para o **stage**
-  - `git add .` adiciona todas as mudanças
-  - `git add <arquivo>` adiciona mudanças específicas
-  - `git add -p` permite adicionar partes específicas de arquivos
+- O comando `git add` move mudanças do **working directory** para o **stage**
 
 ### Tracked x Untracked
 - *Tracked:* Git já monitora mudanças
 - *Untracked:* arquivos ainda não adicionados ao repositório
-- `git add <arquivo>` move mudanças do **working directory** para o **stage**
+- O comando `git add <arquivo>` move mudanças do **working directory** para o **stage**
 - `.gitignore` para arquivos e pastas que não devem ser rastreados
   - Arquivos temporários, logs, arquivos de build, dependências, etc
 
@@ -156,6 +153,200 @@ Uma pequena história sobre o fluxo de trabalho de um desenvolvedor de software
 - **Rebase**: rearranja commits, mantendo histórico linear
   - Útil para manter histórico limpo
   - Cuidado ao reescrever histórico em branches compartilhadas (repositórios remotos)
+
+
+
+## Git - Comandos Básicos
+
+### Configuração Inicial
+<!-- - `git config -[-global] user.name "Seu Nome"`
+- `git config -[-global] user.email "Seu Email"`
+- `git config -[-global] core.editor "Seu Editor Preferido"`
+    - nano, vim, code, notepad++, etc
+- `git config -[-global] color.ui auto`
+- `git config -[-global] alias.st status` -->
+```bash
+# define nome de usuário
+git config --global user.name "Seu Nome"
+```
+<!-- .element class="fragment" type="text/template" -->
+```bash
+# define email de usuário
+git config --global user.email "Seu Email"
+```
+<!-- .element class="fragment" -->
+```bash
+# define editor padrão
+# ex: code, vim, nano, notepad++
+git config --global core.editor "Seu Editor Preferido"
+```
+<!-- .element class="fragment" -->
+```bash
+# ativa cores na saída do Git
+git config --global color.ui auto
+```
+<!-- .element class="fragment" -->
+```bash
+# cria alias para comando
+git config --global alias.st status
+```
+<!-- .element class="fragment" -->
+
+
+### Inicialização de Repositório
+<!-- - `git init`: inicia um repositório local
+- `git clone <url>`: clona um repositório remoto -->
+```bash
+# inicia um repositório local
+git init
+```
+<!-- .element class="fragment" type="text/template" -->
+```bash
+# clona um repositório remoto
+git clone <url>
+```
+<!-- .element class="fragment" -->
+
+### Comandos Básicos dentro do Repositório
+<!-- - `git status`: exibe o estado atual do repositório
+- `git add <arquivo>`: adiciona mudanças ao stage
+    - `git add .` adiciona todas as mudanças
+    - `git add -p` permite adicionar partes específicas de arquivos
+- `git commit -m "mensagem"`: cria um commit
+- `git fetch`: busca mudanças do repositório remoto -->
+```bash
+# exibe o estado atual do repositório
+git status
+```
+<!-- .element class="fragment" type="text/template" -->
+```bash
+# adiciona mudanças ao stage
+# ex: git add README.md
+git add <arquivo>
+```
+<!-- .element class="fragment" -->
+```bash
+# cria um commit
+git commit -m "mensagem"
+```
+<!-- .element class="fragment" -->
+```bash
+# busca mudanças do repositório remoto
+git fetch
+```
+<!-- .element class="fragment" -->
+
+### Mais Comandos Básicos
+<!-- - `git merge <branch>`: mescla mudanças de outra branch
+- `git rebase <branch>`: reorganiza commits para manter histórico linear
+- `git push`: envia commits para o repositório remoto
+- `git pull`: atualiza o repositório local com as mudanças do remoto
+    - Equivalente a `git fetch` + `git merge`
+    - `git pull --rebase` para rebase em vez de merge -->
+```bash
+# mescla mudanças de outra branch
+git merge <branch>
+```
+<!-- .element class="fragment" type="text/template" -->
+```bash
+# reorganiza commits para manter 
+# histórico linear
+git rebase <branch>
+```
+<!-- .element class="fragment" -->
+```bash
+# envia commits para o repositório remoto
+git push
+```
+<!-- .element class="fragment" -->
+```bash
+# atualiza o repositório local 
+# com as mudanças do remoto
+git pull
+```
+<!-- .element class="fragment" -->
+```bash
+# rebase em vez de merge
+git pull --rebase
+```
+<!-- .element class="fragment" -->
+
+### Comandos Básicos de Histórico
+<!-- - `git log`: exibe histórico de commits
+    - `git log --oneline` para exibir em uma linha
+    - `git log --graph` para exibir em formato de grafo
+- `git diff`: exibe diferenças entre arquivos
+    - `git diff <arquivo>` para exibir diferenças de um arquivo específico
+    - `git diff <commit> <commit>` para exibir diferenças entre commits -->
+```bash
+# exibe histórico de commits
+git log
+```
+<!-- .element class="fragment" type="text/template" -->
+```bash
+# exibe histórico de commits em uma linha
+git log --oneline
+```
+<!-- .element class="fragment" -->
+```bash
+# exibe histórico de commits em formato de grafo
+git log --graph
+```
+<!-- .element class="fragment" -->
+```bash
+# exibe diferenças entre arquivos
+git diff
+```
+<!-- .element class="fragment" -->
+```bash
+# exibe diferenças de um arquivo específico
+git diff <arquivo>
+```
+<!-- .element class="fragment" -->
+```bash
+# exibe diferenças entre commits
+git diff <commit> <commit>
+```
+<!-- .element class="fragment" -->
+
+### Comandos Básicos de Branches
+<!-- - `git branch`: exibe lista de branches
+- `git branch <nome>`: cria uma nova branch
+- `git checkout <branch>` / `git switch <branch>`: muda para uma branch
+- `git checkout -b <branch>` / `git switch -c <branch>`: cria e muda para uma branch
+- `git checkout -B <branch>` / `git switch -C <branch>`: força a criação e mudança para uma branch, sobrescrevendo se existir
+- `git branch -d <branch>`: deleta uma branch -->
+```bash
+# exibe lista de branches
+git branch
+```
+<!-- .element class="fragment" type="text/template" -->
+```bash
+# cria uma nova branch
+git branch <nome>
+```
+<!-- .element class="fragment" -->
+```bash
+# muda para uma branch
+git checkout <branch> # git switch <branch>
+```
+<!-- .element class="fragment" -->
+```bash
+# cria e muda para uma branch
+git checkout -b <branch> # git switch -c <branch>
+```
+<!-- .element class="fragment" -->
+```bash
+# força a criação e mudança para uma branch
+# sobrescrevendo se existir
+git checkout -B <branch> # git switch -C <branch>
+```
+<!-- .element class="fragment" -->
+```bash
+# deleta uma branch
+git branch -d <branch>
+```
+<!-- .element class="fragment" -->
 
 
 
@@ -368,7 +559,7 @@ Uma pequena história sobre o fluxo de trabalho de um desenvolvedor de software
 7. **Exemplo de Conflito**
    - Edite a mesma linha em duas branches diferentes
 
-8. **Merge/PR**
+8. **Merge**
    - Merge via linha de comando
    - Resolva eventuais conflitos e finalize o merge
 
