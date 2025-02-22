@@ -49,7 +49,7 @@ export default {
 	// number for the current slide. The function should take in a slide
 	// object and return an array with one string [slideNumber] or
 	// three strings [n1,delimiter,n2]. See #formatSlideNumber().
-	slideNumber: false,
+	slideNumber: true,
 
 	// Can be used to limit the contexts in which the slide number appears
 	// - "all":      Always show the slide number
@@ -91,7 +91,7 @@ export default {
 	overview: true,
 
 	// Vertical centering of slides
-	center: true,
+	center: false,
 
 	// Enables touch navigation on devices with touch input
 	touch: true,
@@ -238,7 +238,7 @@ export default {
 	transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 	// Transition speed
-	transitionSpeed: 'default', // default/fast/slow
+	transitionSpeed: 'fast', // default/fast/slow
 
 	// Transition style for full page slide backgrounds
 	backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
